@@ -443,7 +443,7 @@ export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
   attributes: {
     code: Schema.Attribute.String & Schema.Attribute.Required;
     continent: Schema.Attribute.Enumeration<
-      ['Africa', 'Asia', 'Europe', 'South America']
+      ['Africa', 'Asia', 'Europe', 'Americas']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
