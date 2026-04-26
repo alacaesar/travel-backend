@@ -34,6 +34,8 @@ yarn build
 
 ## ⚙️ Deployment
 
+For this project’s **Docker + VPS + GHCR** flow, see [DEPLOY-VPS.md](./DEPLOY-VPS.md).
+
 Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
 
 ```

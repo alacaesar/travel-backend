@@ -1,0 +1,21 @@
+# Reference stack for a VPS: Strapi listens on localhost only; terminate TLS with Caddy/nginx in front.
+# Build/push the image in CI, then set IMAGE to your registry reference (see DEPLOY-VPS.md).
+
+services:
+  strapi:
+    image: ${STRAPI_IMAGE:?Set STRAPI_IMAGE in .env — see DEPLOY-VPS.md}
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:1337:1337"
+    volumes:
+      - strapi_tmp:/opt/app/.tmp
+      - strapi_uploads:/opt/app/public/uploads
+    environment:
+      NODE_ENV: production
+      DATABASE_CLIENT: ${DATABASE_CLIENT:-sqlite}
+
+volumes:
+  strapi_tmp:
+  strapi_uploads:
