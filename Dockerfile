@@ -6,9 +6,12 @@ ARG NODE_VERSION=22
 FROM node:${NODE_VERSION}-bookworm-slim AS build
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
     python3 \
     make \
     g++ \
+    pkg-config \
+    libvips-dev \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
@@ -25,7 +28,9 @@ RUN npm run build \
 
 FROM node:${NODE_VERSION}-bookworm-slim AS runner
 
-RUN apt-get update && apt-get install -y --no-install-recommends dumb-init \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    dumb-init \
+    libvips \
     && rm -rf /var/lib/apt/lists/*
 
 ENV NODE_ENV=production
