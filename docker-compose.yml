@@ -11,6 +11,7 @@ services:
       - "127.0.0.1:1337:1337"
     volumes:
       - strapi_tmp:/opt/app/.tmp
+      - strapi_database:/opt/app/database
       - strapi_uploads:/opt/app/public/uploads
     environment:
       NODE_ENV: production
@@ -18,4 +19,5 @@ services:
 
 volumes:
   strapi_tmp:
+  strapi_database:
   strapi_uploads:

@@ -49,6 +49,9 @@ COPY --from=build --chown=strapi:strapi /opt/app/package.json ./package.json
 COPY --from=build --chown=strapi:strapi /opt/app/package-lock.json ./package-lock.json
 COPY --from=build --chown=strapi:strapi /opt/app/tsconfig.json ./tsconfig.json
 
+RUN mkdir -p /opt/app/database \
+    && chown -R strapi:strapi /opt/app/database
+
 USER strapi
 
 EXPOSE 1337
